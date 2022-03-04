@@ -1,0 +1,50 @@
+# Sourced from propper bashrc, make mayhem here
+
+source /usr/share/bash-completion/completions/git
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export EDITOR='vim'
+export VISUAL='vim'
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export FZF_DEFAULT_COMMAND="rg --files --hidden --glob '!.local' --glob '!.steam' --glob '!.cache' --no-messages"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+eval "$(direnv hook bash)"
+
+#Pretty shell with color
+PS1="\[\033[0;33m\]\h \[\033[0;35m\]\w\[\033[0;36m\]\$(__git_ps1)>\[\033[00m\] "
+
+# Add more things to path
+export PATH=$HOME/.local/bin:$HOME/bin:$HOME/bin/flutter/bin:$PATH
+
+#Aliases
+alias g='git'
+__git_complete g __git_main
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias gc='git add . && git commit'
+alias ga='git add .'
+alias gs='git status'
+alias glog='git lg'
+
+alias cl='mosh hevans@circuitlab.com' 
+alias open=xdg-open
+alias heii='tmuxinator start heii'
+alias wlblist='tmuxinator start wlblist'
+alias k=kubectl
+
+export PATH=/home/hevans/.pgo/pgo:$PATH
+export PGOUSER=/home/hevans/.pgo/pgo/pgouser
+export PGO_CA_CERT=/home/hevans/.pgo/pgo/client.crt
+export PGO_CLIENT_CERT=/home/hevans/.pgo/pgo/client.crt
+export PGO_CLIENT_KEY=/home/hevans/.pgo/pgo/client.key
