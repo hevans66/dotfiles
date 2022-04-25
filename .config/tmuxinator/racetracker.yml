@@ -1,0 +1,9 @@
+name: racetracker
+root: ~/code/racetracker
+
+windows:
+  - vim: 
+    - cd racetracker
+    - vim -S
+  - server:
+    - docker-compose up -d
